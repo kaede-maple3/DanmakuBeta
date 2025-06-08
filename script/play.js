@@ -145,7 +145,7 @@ function pUpdate(delta) {
                         if (nowHP <= 0) {
                                 gameOver();
                         }
-                        if (nowPhase == 4 && Object.keys(nowEnemies).length == 0) {
+                        if (nowPhase == 5 && Object.keys(nowEnemies).length == 0) {
                                 gameClear();
                         }
                 }
