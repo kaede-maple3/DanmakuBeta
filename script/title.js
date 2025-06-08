@@ -2,13 +2,13 @@ let mouseCG, mouseCR;//マウスの当たり判定
 
 let tScene, tUILayer;//シーンとレイヤー
 
-let titleText,titleTFont;
+let titleText, titleTFont;
 
 let startFont, startText;
 
 //説明ボタン
-let eBRect, eBText,eBTFont;
-let eBColG,eBCol;
+let eBRect, eBText, eBTFont;
+let eBColG, eBCol;
 let mAndEB;
 
 function title() {
@@ -31,17 +31,17 @@ function title() {
     startText.alpha = 0.8;
 
     eBRect = new Fortis.Entity(new Fortis.RectShape(Fortis.Game.canvasCfg.size.x / 8, Fortis.Game.canvasCfg.size.y / 15), new Fortis.ColorMaterial(new Fortis.Color("#252525")));
-    eBRect.pos = new Fortis.Vector2(Fortis.Game.canvasCfg.size.x*9/10, Fortis.Game.canvasCfg.size.y*14 / 15);
-    eBTFont= new Fortis.Font("DotGothic16", 25);
+    eBRect.pos = new Fortis.Vector2(Fortis.Game.canvasCfg.size.x * 9 / 10, Fortis.Game.canvasCfg.size.y * 14 / 15);
+    eBTFont = new Fortis.Font("DotGothic16", 25);
     eBText = new Fortis.Entity(new Fortis.TextShape(eBTFont, "説明"), new Fortis.ColorMaterial(new Fortis.Color("white")));
-    eBText.pos = new Fortis.Vector2(Fortis.Game.canvasCfg.size.x*9/10, Fortis.Game.canvasCfg.size.y*14 / 15);
+    eBText.pos = new Fortis.Vector2(Fortis.Game.canvasCfg.size.x * 9 / 10, Fortis.Game.canvasCfg.size.y * 14 / 15);
     eBColG = new Fortis.ColliderGroup();
-    eBColG.pos = new Fortis.Vector2(Fortis.Game.canvasCfg.size.x*9/10, Fortis.Game.canvasCfg.size.y*14 / 15);
+    eBColG.pos = new Fortis.Vector2(Fortis.Game.canvasCfg.size.x * 9 / 10, Fortis.Game.canvasCfg.size.y * 14 / 15);
     eBCol = new Fortis.RectCollider(Fortis.Game.canvasCfg.size.x / 8, Fortis.Game.canvasCfg.size.y / 15);
     eBColG.add(eBCol);
     mAndEB = Fortis.CollisionManager.add(mouseCG, eBColG);
 
-    tUILayer.addEntities([titleText,startText,eBRect,eBText]);
+    tUILayer.addEntities([titleText, startText, eBRect, eBText]);
 }
 
 function tUpdate() {
@@ -54,5 +54,10 @@ function tUpdate() {
         eBRect.material.fill = new Fortis.Color("#151515");
     } else {
         eBRect.material.fill = new Fortis.Color("#252525");
+    }
+
+    if (Fortis.InputKey["Space"]) {//開始
+        nowScene = "sSelect";
+        sSelectReset();
     }
 }
